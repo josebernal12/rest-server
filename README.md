@@ -2,4 +2,4 @@
 
 
 
-ejecutar npm installl para reconstruit los modulos de node
+ejecutar npm install para reconstruit los modulos de node
