@@ -25,20 +25,30 @@ const ExisteUsuarioPorId = async (id) => {
 
 }
 
-const existeCategoria = async (id) =>{
-  
+const existeCategoria = async (id) => {
+
     const existeId = await Categoria.findById(id)
-        if(!existeId){
-          throw new Error(`el id ${id} no existe`)
-        }
+    if (!existeId) {
+        throw new Error(`el id ${id} no existe`)
     }
-const existeProducto = async (id) =>{
-  
+}
+const existeProducto = async (id) => {
+
     const existeId = await Producto.findById(id)
-        if(!existeId){
-          throw new Error(`el id ${id} no existe`)
-        }
+    if (!existeId) {
+        throw new Error(`el id ${id} no existe`)
     }
+}
+
+const coleccionesPermitidas = (coleccion = '', colecciones = []) => {
+
+    const incluida = colecciones.includes(coleccion)
+
+    if (!incluida) {
+        throw new Error(`la coleccion ${coleccion} no es permitida - ${colecciones}`)
+    }
+    return true
+}
 
 
 
@@ -49,7 +59,8 @@ module.exports = {
     emailValido,
     ExisteUsuarioPorId,
     existeCategoria,
-    existeProducto
+    existeProducto,
+    coleccionesPermitidas
 
 
 }
